@@ -1,4 +1,5 @@
 # OOP_H2101_MotorPH-Payroll-System_CLEMENTE
+Upload Date: March 9, 2024
 This payroll system is still not complete, features only includes Employee Management System and Job Details.
 
 To login, I use 'admin' in both username and password.
