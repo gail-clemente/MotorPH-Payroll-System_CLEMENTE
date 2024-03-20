@@ -24,7 +24,7 @@ public class MyConnection {
         try {
             if (con == null || con.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/motor_ph", "root", "dmns!!404");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/thisschema", "root", "dmns!!404");
 
                 // Check if the connection is successful
                 if (con != null && !con.isClosed()) {
