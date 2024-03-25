@@ -6,6 +6,7 @@ To login, you can either use 'user' in both username and password or 'admin' in 
 
 Example:
 Username: admin
+
 Password: admin
 
 Make sure to change the connection in MyConnection class, change the schema, your root, and your password.
