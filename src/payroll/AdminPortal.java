@@ -3179,9 +3179,6 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         txtPositionPayroll.setText("");
         txtLNamePayroll.setText("");
         txtFNamePayroll.setText("");
-        cmbMonth.removeAllItems();
-        cmbSalaryPeriod.removeAllItems();
-        cmbYear.removeAllItems();
         DefaultTableModel payrollTableModel = (DefaultTableModel) tblJobPayroll.getModel();
         payrollTableModel.setRowCount(0);
         txtBSalary.setText("");
@@ -3556,9 +3553,6 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         txtPositionPayroll.setText("");
         txtLNamePayroll.setText("");
         txtFNamePayroll.setText("");
-        cmbMonth.removeAllItems();
-        cmbSalaryPeriod.removeAllItems();
-        cmbYear.removeAllItems();
         DefaultTableModel payrollTableModel = (DefaultTableModel) tblJobPayroll.getModel();
         payrollTableModel.setRowCount(0);
         txtBSalary.setText("");
