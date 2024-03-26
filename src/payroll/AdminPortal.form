@@ -1490,8 +1490,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtSearch" min="-2" pref="435" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Component id="txtSearch" min="-2" pref="229" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1567,7 +1567,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Bahnschrift" size="18" style="0"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="SEARCH:"/>
+                            <Property name="text" type="java.lang.String" value="SEARCH EMPLOYEE LASTNAME:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtSearch">
@@ -1880,8 +1880,6 @@
                                           <Group type="102" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtIDSearch" min="-2" pref="435" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -1895,23 +1893,28 @@
                                                           </Group>
                                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                               <Group type="102" alignment="1" attributes="0">
-                                                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                                  <Component id="txtEmpIDforJob" min="-2" pref="76" max="-2" attributes="0"/>
-                                                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="txtLNameJob" min="-2" pref="232" max="-2" attributes="0"/>
-                                                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" alignment="1" attributes="0">
                                                                   <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                                   <Component id="txtBasicSalary" min="-2" pref="233" max="-2" attributes="0"/>
                                                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                                                   <Component id="btnUpdateJob" min="-2" pref="92" max="-2" attributes="0"/>
                                                                   <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                                  <Component id="txtEmpIDforJob" min="-2" pref="76" max="-2" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Component id="txtIDSearch" min="-2" pref="252" max="-2" attributes="0"/>
+                                                                      <Group type="102" attributes="0">
+                                                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace max="-2" attributes="0"/>
+                                                                          <Component id="txtLNameJob" min="-2" pref="232" max="-2" attributes="0"/>
+                                                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                  </Group>
                                                               </Group>
                                                           </Group>
                                                       </Group>
@@ -2017,7 +2020,7 @@
                                   <Component id="btnRefreshJob" min="-2" pref="18" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                                  <EmptySpace pref="71" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2028,7 +2031,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Bahnschrift" size="18" style="0"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="SEARCH EMPLOYEE:"/>
+                            <Property name="text" type="java.lang.String" value="SEARCH EMPLOYEE LASTNAME:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtIDSearch">
@@ -2365,15 +2368,33 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="1064" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="443" max="32767" attributes="0"/>
+                                  <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="387" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="476" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="237" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel51">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Bahnschrift" size="18" style="2"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="this panel is currently empty"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
@@ -3343,7 +3364,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Bahnschrift" size="12" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;i&gt; (Press Enter)  &lt;/i&gt;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;i&gt; (Press Enter)     &#x9;&#x9;  For example: try 3, 6 or 32  &lt;/i&gt;&lt;/html&gt;"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblSalary">

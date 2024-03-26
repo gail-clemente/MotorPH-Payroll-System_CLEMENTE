@@ -55,43 +55,47 @@ public class EmployeeDataController {
     }
     }
 
-    public void filterAndDisplayData(String searchTerm) {
-        tableModel.setRowCount(0); // Clear existing data in the table
+    public void filterAndDisplayData(String lastNameSearchTerm, String firstNameSearchTerm) {
+    tableModel.setRowCount(0); // Clear existing data in the table
 
-        try {
-            MyConnection myConnection = MyConnection.getInstance();
-            Connection connection = myConnection.connect();
+    try {
+        MyConnection myConnection = MyConnection.getInstance();
+        Connection connection = myConnection.connect();
 
-            if (connection != null) {
-                String query = "SELECT EmployeeID, Last_Name, First_Name, Birthday, Address, Phone_Number, SSS, Philhealth, Pag_ibig, TIN FROM employee_details WHERE Last_Name LIKE ?";
+        if (connection != null) {
+            String query = "SELECT EmployeeID, Last_Name, First_Name, Birthday, Address, Phone_Number, SSS, Philhealth, Pag_ibig, TIN " +
+                           "FROM employee_details " +
+                           "WHERE Last_Name LIKE ? AND First_Name LIKE ?";
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                    preparedStatement.setString(1, "%" + searchTerm + "%");
-                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                        while (resultSet.next()) {
-                            Object[] rowData = {
-                                    resultSet.getInt("EmployeeID"),
-                                    resultSet.getString("Last_Name"),
-                                    resultSet.getString("First_Name"),
-                                    resultSet.getString("Birthday"),
-                                    resultSet.getString("Address"),
-                                    resultSet.getString("Phone_Number"),
-                                    resultSet.getString("SSS"),
-                                    resultSet.getString("Philhealth"),
-                                    resultSet.getString("Pag_ibig"),
-                                    resultSet.getString("TIN"),
-                            };
-                            tableModel.addRow(rowData);
-                        }
-                        
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, "%" + lastNameSearchTerm + "%");
+                preparedStatement.setString(2, "%" + firstNameSearchTerm + "%");
+                
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Object[] rowData = {
+                                resultSet.getInt("EmployeeID"),
+                                resultSet.getString("Last_Name"),
+                                resultSet.getString("First_Name"),
+                                resultSet.getString("Birthday"),
+                                resultSet.getString("Address"),
+                                resultSet.getString("Phone_Number"),
+                                resultSet.getString("SSS"),
+                                resultSet.getString("Philhealth"),
+                                resultSet.getString("Pag_ibig"),
+                                resultSet.getString("TIN"),
+                        };
+                        tableModel.addRow(rowData);
                     }
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Error fetching data from database: " + e.getMessage());
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.err.println("Error fetching data from database: " + e.getMessage());
     }
+}
+
     
     public void fetchDataJobDetailsFromDatabase() {
        try {

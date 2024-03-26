@@ -289,10 +289,28 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
     
     
 
-    private void searchAndUpdateTable() {
-        String searchTerm = txtSearch.getText().trim().toLowerCase();
-        dataController.filterAndDisplayData(searchTerm);
+private void searchAndUpdateTable() {
+    String searchTerm = txtSearch.getText().trim().toLowerCase();
+    
+    // Split the search term into parts based on space
+    String[] searchParts = searchTerm.split("\\s+", 2); // Split into maximum of 2 parts
+    
+    String lastNameSearchTerm = "";
+    String firstNameSearchTerm = "";
+    
+    if (searchParts.length > 0) {
+        lastNameSearchTerm = searchParts[0]; // First part is the last name
+        
+        if (searchParts.length > 1) {
+            firstNameSearchTerm = searchParts[1]; // Second part is the first name
+        }
     }
+    
+    // Pass the extracted search terms to the data controller
+    dataController.filterAndDisplayData(lastNameSearchTerm, firstNameSearchTerm);
+}
+
+
     
 
     public void saveEmployeeToDatabase(Employee employee) {
@@ -486,6 +504,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         tblJobDetails = new javax.swing.JTable();
         btnRefreshJob = new javax.swing.JButton();
         p3BonusesDeductions = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
         p3EmpTime = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         txtIDSearchAttend = new javax.swing.JTextField();
@@ -1259,7 +1278,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         p1EmpInformation.setPreferredSize(new java.awt.Dimension(1060, 500));
 
         jLabel9.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel9.setText("SEARCH:");
+        jLabel9.setText("SEARCH EMPLOYEE LASTNAME:");
 
         txtSearch.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         txtSearch.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -1455,8 +1474,8 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
             .addGroup(p1EmpInformationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         p1EmpInformationLayout.setVerticalGroup(
@@ -1516,7 +1535,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         p2JobDetails.setMinimumSize(new java.awt.Dimension(1080, 496));
 
         jLabel11.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel11.setText("SEARCH EMPLOYEE:");
+        jLabel11.setText("SEARCH EMPLOYEE LASTNAME:");
 
         txtIDSearch.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         txtIDSearch.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -1694,9 +1713,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
                     .addGroup(p2JobDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(p2JobDetailsLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11))
                         .addGroup(p2JobDetailsLayout.createSequentialGroup()
                             .addGap(28, 28, 28)
                             .addGroup(p2JobDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1708,22 +1725,25 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
                                             .addComponent(txtSupeJob, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(p2JobDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p2JobDetailsLayout.createSequentialGroup()
-                                                .addComponent(jLabel14)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtEmpIDforJob, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(57, 57, 57)
-                                                .addComponent(jLabel22)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtLNameJob, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(60, 60, 60)
-                                                .addComponent(jLabel23))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p2JobDetailsLayout.createSequentialGroup()
                                                 .addComponent(jLabel25)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(39, 39, 39)
                                                 .addComponent(btnUpdateJob, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(247, 247, 247))))
+                                                .addGap(247, 247, 247))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p2JobDetailsLayout.createSequentialGroup()
+                                                .addComponent(jLabel14)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtEmpIDforJob, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(57, 57, 57)
+                                                .addGroup(p2JobDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(p2JobDetailsLayout.createSequentialGroup()
+                                                        .addComponent(jLabel22)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtLNameJob, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(60, 60, 60)
+                                                        .addComponent(jLabel23))))))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtFNameJob, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(p2JobDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1802,20 +1822,29 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
                 .addComponent(btnRefreshJob, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pnlCenter.add(p2JobDetails, "card3");
+
+        jLabel51.setFont(new java.awt.Font("Bahnschrift", 2, 18)); // NOI18N
+        jLabel51.setText("this panel is currently empty");
 
         javax.swing.GroupLayout p3BonusesDeductionsLayout = new javax.swing.GroupLayout(p3BonusesDeductions);
         p3BonusesDeductions.setLayout(p3BonusesDeductionsLayout);
         p3BonusesDeductionsLayout.setHorizontalGroup(
             p3BonusesDeductionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1064, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p3BonusesDeductionsLayout.createSequentialGroup()
+                .addContainerGap(443, Short.MAX_VALUE)
+                .addComponent(jLabel51)
+                .addGap(387, 387, 387))
         );
         p3BonusesDeductionsLayout.setVerticalGroup(
             p3BonusesDeductionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
+            .addGroup(p3BonusesDeductionsLayout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addComponent(jLabel51)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         pnlCenter.add(p3BonusesDeductions, "card4");
@@ -2211,7 +2240,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
         jLabel10.setText("<html><b>[2]</b><i>Click the table to get the Basic Salary  </i></html>");
 
         jLabel54.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
-        jLabel54.setText("<html><i> (Press Enter)  </i></html>");
+        jLabel54.setText("<html><i> (Press Enter)     \t\t  For example: try 3, 6 or 32  </i></html>");
 
         lblSalary.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
         lblSalary.setText("0");
@@ -3796,6 +3825,7 @@ public void displayNumberOfDaysAndTotalHours(int numberOfDays, String totalHours
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
