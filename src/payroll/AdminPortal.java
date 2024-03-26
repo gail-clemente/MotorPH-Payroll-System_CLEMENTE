@@ -313,40 +313,55 @@ private void searchAndUpdateTable() {
 
     
 
-    public void saveEmployeeToDatabase(Employee employee) {
-        try {
-            MyConnection myConnection = MyConnection.getInstance();
-            Connection connection = myConnection.connect();
+public void saveEmployeeToDatabase(Employee employee) {
+    try {
+        MyConnection myConnection = MyConnection.getInstance();
+        Connection connection = myConnection.connect();
 
-            if (connection != null) {
-                String insertQuery = "INSERT INTO employee_details (Last_Name, First_Name, Birthday, Address, Phone_Number, SSS, Philhealth, TIN, Pag_ibig) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        if (connection != null) {
+            // Validate mandatory fields
+            if (employee.getLastName() == null || employee.getLastName().isEmpty() ||
+                employee.getFirstName() == null || employee.getFirstName().isEmpty() ||
+                employee.getBirthday() == null || employee.getAddress() == null || employee.getAddress().isEmpty() ||
+                employee.getPhoneNum() == null || employee.getPhoneNum().isEmpty() ||
+                employee.getSssNum() == null || employee.getSssNum().isEmpty() ||
+                employee.getPhilhealthNum() == null || employee.getPhilhealthNum().isEmpty() ||
+                employee.getTinNum() == null || employee.getTinNum().isEmpty() ||
+                employee.getPagibigNum() == null || employee.getPagibigNum().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Some mandatory fields are missing. Please fill in all mandatory fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop execution if any mandatory field is missing
+            }
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-                    preparedStatement.setString(1, employee.getLastName());
-                    preparedStatement.setString(2, employee.getFirstName());
-                    java.sql.Date sqlDate = new java.sql.Date(employee.getBirthday().getTime());
-                    preparedStatement.setDate(3, sqlDate);
-                    preparedStatement.setString(4, employee.getAddress());
-                    preparedStatement.setString(5, employee.getPhoneNum());
-                    preparedStatement.setString(6, employee.getSssNum());
-                    preparedStatement.setString(7, employee.getPhilhealthNum());
-                    preparedStatement.setString(8, employee.getTinNum());
-                    preparedStatement.setString(9, employee.getPagibigNum());
+            String insertQuery = "INSERT INTO employee_details (Last_Name, First_Name, Birthday, Address, Phone_Number, SSS, Philhealth, TIN, Pag_ibig) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                    int rowsAffected = preparedStatement.executeUpdate();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                preparedStatement.setString(1, employee.getLastName());
+                preparedStatement.setString(2, employee.getFirstName());
+                java.sql.Date sqlDate = new java.sql.Date(employee.getBirthday().getTime());
+                preparedStatement.setDate(3, sqlDate);
+                preparedStatement.setString(4, employee.getAddress());
+                preparedStatement.setString(5, employee.getPhoneNum());
+                preparedStatement.setString(6, employee.getSssNum());
+                preparedStatement.setString(7, employee.getPhilhealthNum());
+                preparedStatement.setString(8, employee.getTinNum());
+                preparedStatement.setString(9, employee.getPagibigNum());
 
-                    if (rowsAffected > 0) {
-                        JOptionPane.showMessageDialog(null, "Data inserted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Failed to insert data. No rows affected.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Data inserted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to insert data. No rows affected.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error saving data to database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error saving data to database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
+
 
     
     
